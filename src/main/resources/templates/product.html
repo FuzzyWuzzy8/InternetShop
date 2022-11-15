@@ -1,0 +1,48 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Internet Shop Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Produkt</h2>
+
+<div class="display-one" th:object="${product}">
+	<table>
+		<tr>
+			<td>Id</td> <td th:text="*{id}">ID</td>
+		</tr>
+		<tr>
+			<td>Nazwa produktu</td> <td th:text="*{firstName}">FIRST_NAME</td>
+		</tr>		
+		<tr>
+			<td>Kod producenta</td> <td th:text="*{lastName}">LAST_NAME</td>
+		</tr>		
+		<tr>
+			<td>Data premiery</td> <td th:text="*{releaseDate}">RELEASE_DATE</td>
+		</tr>
+		<tr>
+			<td>Cena</td> <td th:text="*{price}">SALARY</td>
+		</tr>		
+		<tr>
+			<td>Producent</td> <td th:text="*{company.name}">COMPANY</td>
+		</tr>		
+		<tr>
+			<td>Kategoria</td> <td th:text="*{category.name}">CATEGORY</td>
+		</tr>		
+	</table>
+</div>
+
+<div>
+	<p><a th:href="@{/products/form/} + ${product.id}">Modyfikuj</a></p>
+	<p><a th:href="@{/products/delete/} + ${product.id}">Usuń</a></p>
+	<p><a th:href="@{/products}">Powrót</a></p>
+</div>
+
+</body>
+
+</html>

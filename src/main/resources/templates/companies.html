@@ -1,0 +1,40 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Internet Shop Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Lista producentów</h2>
+
+<div class="display-list" style="width:300px">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Nazwa</th>			
+		</tr>
+		
+		<th:block th:each = "com : ${companies}">
+			<tr>
+				<td th:text="${com.id}">ID</td>
+				<td>
+					<a th:href="@{/companies/} + ${com.id}" th:text="${com.name}">NAME</a>
+				</td>				
+			</tr>
+		</th:block>
+		
+	</table>
+</div>
+
+<div>
+	<p><a th:href="@{/companies/form}">Utwórz</a></p>
+	<p><a th:href="@{/}">Strona domowa</a></p>
+</div>
+
+</body>
+
+</html>

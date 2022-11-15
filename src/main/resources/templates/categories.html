@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Internet Shop Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Kategorie produktów</h2>
+
+<div class="display-list" style="width:300px">
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Nazwa</th>
+		</tr>
+		
+		<th:block th:each = "cat : ${categories}">
+			<tr>
+				<td th:text="${cat.id}">ID</td>
+				<td>
+					<a th:href="@{/categories/} + ${cat.id}" th:text="${cat.name}">NAME</a>
+				</td>				
+			</tr>
+		</th:block>
+		
+	</table>
+</div>
+
+<div>
+	<p><a th:href="@{/}">Strona domowa</a></p>
+</div>
+
+</body>
+
+</html>

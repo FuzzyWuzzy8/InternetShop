@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Internet Shop Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Producent</h2>
+
+<div class="display-one" th:object="${company}">
+	<table>
+		<tr>
+			<td>Id</td> <td th:text="*{id}">ID</td>
+		</tr>
+		<tr>
+			<td>Nazwa</td> <td th:text="*{name}">NAME</td>
+		</tr>		
+		<tr>
+			<td>Opis</td> <td th:text="*{description}">DESCRIPTION</td>
+		</tr>
+		<tr>
+			<td>Wszystkie produkty</td>
+			<td>
+				<ul>
+					<th:block th:each = "pro : ${products}">
+						<li th:text = "${pro.lastName + ' ' + pro.firstName}">FULL_NAME</li>
+					</th:block>
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div>
+	<p><a th:href="@{/companies/form/} + ${company.id}">Modyfikuj</a></p>
+	<p><a th:href="@{/companies/delete/} + ${company.id}">Usuń</a></p>
+	<p><a th:href="@{/companies}">Powrót</a></p>
+</div>
+
+</body>
+
+</html>

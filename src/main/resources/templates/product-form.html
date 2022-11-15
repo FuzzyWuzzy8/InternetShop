@@ -1,0 +1,88 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Internet Shop Management System</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" th:href="@{/main.css}" />
+</head>
+
+<body>
+
+<h2>Produkt</h2>
+
+<div class="display-form" th:object="${product}">
+<form th:action="@{/products/save}" method="post">
+	<table>
+		<tr>
+			<td>Id</td> 
+			<td th:text="*{id}">ID</td>
+			<td>
+				<input type="hidden" th:field="*{id}" />
+			</td>
+		</tr>
+		<tr>
+			<td>Nazwa produktu</td>
+			<td>
+				<input type="text" th:field="*{firstName}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('firstName')}" th:errors=*{firstName}>ERROR</td>
+		</tr>		
+		<tr>
+			<td>Kod producenta</td>
+			<td>
+				<input type="text" th:field="*{lastName}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('lastName')}" th:errors=*{lastName}>ERROR</td>
+		</tr>		
+		<tr>
+			<td>Data premiery</td>
+			<td>
+				<input type="date" th:field="*{releaseDate}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('releaseDate')}" th:errors=*{releaseDate}>ERROR</td>
+		</tr>
+		<tr>
+			<td>Cena</td>
+			<td>
+				<input type="number" th:field="*{price}" />
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('price')}" th:errors=*{price}>ERROR</td>
+		</tr>		
+		<tr>
+			<td>Producent</td>
+			<td>
+				<select th:field = "*{company.id}">
+					<option th:each  = "com : ${companies}"
+					        th:value = "${com.id}"
+					        th:text  = "${com.name}" />
+				</select>
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('company')}" th:errors=*{company}>ERROR</td>
+		</tr>		
+		<tr>
+			<td>Kategoria</td>
+			<td>
+				<select th:field = "*{category.id}">
+					<option th:each  = "cat : ${categories}"
+					        th:value = "${cat.id}"
+					        th:text  = "${cat.name}" />
+				</select>
+			</td>
+			<td class="error" th:if="${#fields.hasErrors('category')}" th:errors=*{category}>ERROR</td>
+		</tr>
+				
+		<tr>
+			<td>
+				<input type="submit" value="Utwórz" />
+			</td>
+			<td><a th:href="@{/products}">Anuluj</a></td>
+		</tr>
+
+	</table>
+</form>
+</div>
+
+</body>
+
+</html>
